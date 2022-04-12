@@ -15,12 +15,12 @@ func (dbconn *DbConn) Commit() error {
 }
 
 //TxEnd DB doesnt rollback, do nothing here
-func (dbconn *DbConn) TxEnd(txFunc func() error) error {
+func (dbconn *DbConn) TxEnd(txErr error) error {
 	return nil
 }
 
 //TxEnd TX does rollback
-func (txconn *TxConn) TxEnd(txFunc func() error) error {
+func (txconn *TxConn) TxEnd(txErr error) error {
 	var err error
 	tx := txconn.DB
 
@@ -37,7 +37,8 @@ func (txconn *TxConn) TxEnd(txFunc func() error) error {
 			err = tx.Commit() // if Commit returns error update err with commit err
 		}
 	}()
-	err = txFunc()
+
+	err = txErr
 	return err
 }
 

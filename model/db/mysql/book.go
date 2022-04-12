@@ -28,6 +28,7 @@ func (q *Querier) QueryBook(title string) (result []domain.Book, err error) {
 }
 
 func (q *Querier) InsertBook(book domain.Book) (err error) {
+	// return errors.New("not implemented")
 	_, err = q.DB.ExecContext(context.Background(), "INSERT INTO books SET title = ?", book.Title)
 	if err != nil {
 		log.Println("failed with error: ", err)
@@ -38,6 +39,7 @@ func (q *Querier) InsertBook(book domain.Book) (err error) {
 }
 
 func (q *Querier) UpdateBook(book domain.Book) (err error) {
+	// return errors.New("not implemented")
 	_, err = q.DB.ExecContext(context.Background(), "UPDATE books SET title = ? WHERE id = ?", book.Title, book.ID)
 	if err != nil {
 		log.Println("failed with error: ", err)

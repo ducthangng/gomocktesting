@@ -23,5 +23,5 @@ type Transactioner interface {
 	Commit() error
 	// TxEnd commits a transaction if no errors, otherwise rollback
 	// txFunc is the operations wrapped in a transaction
-	TxEnd(txFunc func() error) error
+	TxEnd(txErr error) error
 }

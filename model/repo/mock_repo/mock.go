@@ -35,7 +35,7 @@ func (m *MockBookRepository) EXPECT() *MockBookRepositoryMockRecorder {
 }
 
 // EnableTx mocks base method.
-func (m *MockBookRepository) EnableTx(arg0 func() error) error {
+func (m *MockBookRepository) EnableTx(arg0 error) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "EnableTx", arg0)
 	ret0, _ := ret[0].(error)

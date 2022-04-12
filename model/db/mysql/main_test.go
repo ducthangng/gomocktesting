@@ -30,7 +30,7 @@ func BuildTx(db *sql.DB, Flag bool) tx.DBTX {
 		if err != nil {
 			return nil
 		}
-		return &tx.TxConn{txs}
+		return &tx.TxConn{DB: txs}
 	}
 
 	return &tx.DbConn{DB: db}
